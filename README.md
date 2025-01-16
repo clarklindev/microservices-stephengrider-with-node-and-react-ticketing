@@ -45,10 +45,10 @@ gcloud auth application-default login
     -NOTE: also try use `nodes -> 1` and `turn OFF auto-scaling`
 
 - machine configuration  
-  <img src="../exercise_files/udemy-docker-section06-122-kubernetes-cluster-machine-configuration.png" width="800" alt="udemy-docker-section06-122-kubernetes-cluster-machine-configuration.png"/>
+  <img src="./exercise_files/udemy-docker-section06-122-kubernetes-cluster-machine-configuration.png" width="800" alt="udemy-docker-section06-122-kubernetes-cluster-machine-configuration.png"/>
 
 - machine type  
-  <img src="../exercise_files/udemy-docker-section06-122-kubernetes-cluster-machine-type.png" width="800" alt="udemy-docker-section06-122-kubernetes-cluster-machine-type.png"/>
+  <img src="./exercise_files/udemy-docker-section06-122-kubernetes-cluster-machine-type.png" width="800" alt="udemy-docker-section06-122-kubernetes-cluster-machine-type.png"/>
 
 4. login gcloud
 
@@ -118,7 +118,7 @@ gcloud console -> view all products -> networking -> network services -> load ba
 
 - [check load balancer](https://console.cloud.google.com/net-services/loadbalancing/)
 
-<img src="../exercise_files/udemy-docker-section06-122-kubernetes-cluster-load-balancer-ip.png" alt="udemy-docker-section06-122-kubernetes-cluster-load-balancer-ip.png" width="800">
+<img src="./exercise_files/udemy-docker-section06-122-kubernetes-cluster-load-balancer-ip.png" alt="udemy-docker-section06-122-kubernetes-cluster-load-balancer-ip.png" width="800">
 
 9. paste in host (save as administrator)
 
