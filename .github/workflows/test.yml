@@ -1,0 +1,17 @@
+name: tests
+
+on: 
+  pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: checkout code
+        uses: actions/checkout/@v2
+      
+      - name: install and run auth tests
+        run: cd auth && pnpm i && pnpm run test:ci
