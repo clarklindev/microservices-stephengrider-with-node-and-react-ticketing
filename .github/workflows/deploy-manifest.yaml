@@ -17,9 +17,9 @@ jobs:
         with: 
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
 
-      #step - get kubernetes config and save it inside container
+      #step - get kubernetes config context and save it inside container
       # doctl kubernetes cluster kubeconfig save <name of kubernetes cluster>
       - run: doctl kubernetes cluster kubeconfig save ticketing
             
-      #step - apply the configuration files from infra/k8s into cluster
+      #step - apply the configuration files from infra/k8s to cluster
       - run: kubectl apply -f infra/k8s
