@@ -21,5 +21,5 @@ jobs:
       # doctl kubernetes cluster kubeconfig save <name of kubernetes cluster>
       - run: doctl kubernetes cluster kubeconfig save ticketing
             
-      #step - apply the configuration files from infra/k8s to cluster
-      - run: kubectl apply -f infra/k8s
+      #step - apply the configuration files from infra/k8s AND infra-k8s-prod to cluster
+      - run: kubectl apply -f infra/k8s && kubectl apply -f infra-k8s-prod
