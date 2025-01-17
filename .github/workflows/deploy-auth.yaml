@@ -1,0 +1,36 @@
+name: deploy-auth
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'auth/**'  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      #step - build image
+      - run: cd auth && docker build -t clarklindev/auth . 
+
+      #step - login to docker
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+
+      #step - push image to dockerhub + provide access token
+      - run: docker push clarklindev/auth
+
+      #step -get doctl + authenticate
+      - uses: digitalocean/action-doctl@v2
+        with: 
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+
+      #step - get kubernetes config and save it inside container
+      # doctl kubernetes cluster kubeconfig save <name of kubernetes cluster>
+      - run: doctl kubernetes cluster kubeconfig save ticketing
+            
+      #step - reach in cluster and tell deployment that it must update itself + use latest image from dockerhub
+      - run: kubectl rollout restart deployment auth-depl
